@@ -113,22 +113,17 @@ public class TestJunitTest {
         long resultadoFactorial = 6;
         long resultado = junitTest.factorial(numero);
 
-        assertTrue(resultado == resultadoFactorial);
-    }
+        assertEquals(resultadoFactorial, resultado, "El factorial de 3 es 6");
+}
 
-    @Test
-    public void testFactorialMenorCero() {
-        JunitTestMetodos junitTest = new JunitTestMetodos();
-        int numero = -8;
-        long resultadoFactorial = 0;
-        long resultado;
-        try {
-            resultado = junitTest.factorial(numero);
-        } catch (IllegalArgumentException e) {
-            resultado = 0;
-        }
-        assertTrue(resultado == resultadoFactorial);
-    }
+@Test
+public void testFactorialMenorCero() {
+    JunitTestMetodos junitTest = new JunitTestMetodos();
+    int numero = -8;
+    assertThrows(IllegalArgumentException.class, () -> {
+        junitTest.factorial(numero);
+    });
+}
 
     @Test
     public void testEsPrimo() {
