@@ -212,17 +212,9 @@ public void testFactorialMenorCero() {
     @Test
     public void testCalcularMediaVacia() {
         JunitTestMetodos junitTest = new JunitTestMetodos();
-        List<Integer> lista = new ArrayList<>();
-        int media = 0;
-        double resultado;
-
-        try {
-            resultado = junitTest.calcularMedia(lista);
-        } catch (IllegalArgumentException e) {
-            resultado = 0;
-        }
-
-        assertEquals(resultado, media);
+        List<Integer> lista = new ArrayList<>(); 
+    
+        assertThrows(IllegalArgumentException.class, () -> junitTest.calcularMedia(lista));
     }
 
     @Test
